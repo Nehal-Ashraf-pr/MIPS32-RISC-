@@ -1,29 +1,31 @@
-**MIPS32 Pipeline Processor**
+## **MIPS32 Pipeline Processor**
 
-**Project Overview**
+### **Project Overview**
 
 This project implements a five-stage pipelined MIPS32 processor using Verilog and is simulated in Xilinx ISE. The processor supports arithmetic, logic, memory, and branching instructions with hazard mitigation techniques to ensure smooth execution.
 
-**Features**
+### **Features**
 
-Five-stage pipeline: 
+- Five-stage pipeline: 
 
-Instruction Fetch (IF)
+  - Instruction Fetch (IF)
 
-Instruction Decode (ID)
+  - Instruction Decode (ID)
 
-Execute (EX)
+  - Execute (EX)
 
-Memory Access (MEM)
+  - Memory Access (MEM)
 
-Write Back (WB)
+  - Write Back (WB)
 
-Supports basic **R-type** and **I-type instructions** 
+  ---
+
+### Supports basic **R-type** and **I-type instructions** 
 
 (ADD, SUB, AND, OR, SLT, MUL, ADDI, SUBI, SLTI, LW, SW, BEQZ, BNEQZ, HLT)
 
 
-:: Hazard mitigation techniques
+### Hazard mitigation techniques
 
 (Forwarding, Stalling, Branch Prediction)
 
@@ -35,74 +37,77 @@ Supports basic **R-type** and **I-type instructions**
 
 **Synthesizable and Simulatable in Xilinx ISE**
 
-Pipeline Stages
+---
+
+## Pipeline Stages
 
 
 
-**Instruction Fetch (IF):**
+- **Instruction Fetch (IF):**
 
-Fetches instruction from memory
+  - Fetches instruction from memory
 
-Updates program counter (PC)
-
-
-
-**Instruction Decode (ID):**
-
-Decodes instruction and reads registers
-
-Sign-extends immediate values
+  - Updates program counter (PC)
 
 
 
-**Execute (EX):**
+- **Instruction Decode (ID):**
 
-Performs ALU operations (arithmetic/logic/branch calculations)
+  - Decodes instruction and reads registers
 
-Determines branch condition
-
-
-
-**Memory Access (MEM):**
-
-Reads/Writes data from/to memory
+  - Sign-extends immediate values
 
 
 
-**Write Back (WB):**
+- **Execute (EX):**
 
-Writes results back to registers
+   - Performs ALU operations (arithmetic/logic/branch calculations)
+
+   - Determines branch condition
 
 
 
-**Setup and Simulation**
+- **Memory Access (MEM):**
+
+    - Reads/Writes data from/to memory
+
+
+
+- **Write Back (WB):**
+
+    - Writes results back to registers
+
+---
+
+### **Setup and Simulation**
 
 **1. Environment Setup**
 
-Install Xilinx ISE Design Suite
+   - Install Xilinx ISE Design Suite
 
-Clone the repository or download project files
+   - Clone the repository or download project files
 
 
 
 **2. Running the Simulation**
 
-Open Xilinx ISE and create a new project
+   - Open Xilinx ISE and create a new project
 
-Add pipe_MIPS32.v and pipe_MIPS32_tb.v to the project
+   - Add pipe_MIPS32.v and pipe_MIPS32_tb.v to the project
 
-Set pipe_MIPS32_tb.v as the top-level module
+   - Set pipe_MIPS32_tb.v as the top-level module
 
-Run Behavioral Simulation
+   - Run Behavioral Simulation
 
-Observe waveforms in ISim
+   - Observe waveforms in ISim
 
+---
 
+### **3. Sample Test Cases**
 
-**3. Sample Test Cases**
+- Adding three numbers (10, 20, 25) and storing the result:
 
-Adding three numbers (10, 20, 25) and storing the result:
-
+   ```
     Mem[0] = 32'h2801000a;  // ADDI R1,R0,10
 
     Mem[1] = 32'h28020014;  // ADDI R2,R0,20
@@ -114,6 +119,7 @@ Adding three numbers (10, 20, 25) and storing the result:
     Mem[4] = 32'h00832800;  // ADD R5,R4,R3
 
     Mem[5] = 32'hfc000000;  // HALT
+  ```
 
 
 
@@ -126,8 +132,9 @@ Adding three numbers (10, 20, 25) and storing the result:
 
 
 
-Q) Loading from memory and storing result:
+- Loading from memory and storing result:
 
+   ```
     Mem[0] = 32'h28010078;  // ADDI R1,R0,120
 
     Mem[1] = 32'h20220000;  // LW R2,0(R1)
@@ -137,6 +144,7 @@ Q) Loading from memory and storing result:
     Mem[3] = 32'h24220001;  // SW R2,1(R1)
 
     Mem[4] = 32'hfc000000;  // HALT
+   ```
 
 ![image](https://github.com/user-attachments/assets/b9fb32a8-82cd-4370-af9e-c895c10d6d27)
 
@@ -145,18 +153,18 @@ Q) Loading from memory and storing result:
 
 
 
-**Results**
+### **Results**
 
-The processor successfully executes arithmetic, logic, and memory operations.
+- The processor successfully executes arithmetic, logic, and memory operations.
 
-The waveforms in ISim confirm correct pipeline execution with forwarding and branch handling.
+- The waveforms in ISim confirm correct pipeline execution with forwarding and branch handling.
 
 
 
-**Future Improvements**
+### **Future Improvements**
 
-Implement Full Hazard Detection Unit to optimize stalling.
+- Implement Full Hazard Detection Unit to optimize stalling.
 
-Extend instruction set to support additional operations.
+- Extend instruction set to support additional operations.
 
-Integrate cache memory for better performance.
+- Integrate cache memory for better performance.
